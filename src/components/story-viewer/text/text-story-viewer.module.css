@@ -1,0 +1,15 @@
+.root {
+    --size: 500px;
+    width: var(--size);
+    height: var(--size);
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+.text {
+    color: #fff;
+    font-size: 22px;
+}

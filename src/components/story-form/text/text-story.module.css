@@ -1,0 +1,96 @@
+.root {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.aside {
+    padding: 20px;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.label {
+    font-size: 12px;
+    margin: 10px 0;
+    font-weight: 500;
+    border-top: 1px solid var(--gray-4);
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.main {
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 30px 30px 30px;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
+}
+
+.textStoryPreview {
+    --size: 400px;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.textarea {
+    padding: 10px;
+    border-radius: 8px;
+    resize: none;
+}
+
+.backgroundList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    grid-gap: 0.50px;
+    grid-gap: 10px;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--gray-4);
+    padding-bottom: 20px;
+}
+
+.backgroundList li {
+    list-style: none;
+    --size: 30px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+}
+
+.text {
+    font-size: 20px;
+    color: #fff;
+    word-break: break-all;
+    padding: 15px;
+}
+
+.btnGroup {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.saveBtn,
+.cancelBtn {
+    padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.cancelBtn {
+    background: var(--red);
+}
