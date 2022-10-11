@@ -1,6 +1,6 @@
 {
   "name": "facebook-story",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "./dist/index.js",
   "module": "./dist/cjs/index.js",
   "types": "./dist/index.d.ts",
@@ -55,7 +55,8 @@
     "colorette": "^2.0.19",
     "fabric": "^5.2.4",
     "fabricjs-react": "^1.0.8",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "tslib": "^2.4.0"
   },
   "repository": {
     "type": "git",
@@ -63,8 +64,7 @@
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "tslib": "^2.4.0"
+    "react-dom": "^16.8.0"
   },
   "files": [
     "dist",

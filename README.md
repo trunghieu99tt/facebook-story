@@ -21,4 +21,4 @@ Install my-project with npm
 
 ## Demo
 
-You can find the demo [here](https://link-url-here.org)
+You can find the demo [here](https://codesandbox.io/s/facebook-story-demo-915i8e)
