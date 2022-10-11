@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Facebook-story-demo/static/css/main.ad18df39.chunk.css",
+    "main.js": "/Facebook-story-demo/static/js/main.f8885811.chunk.js",
+    "main.js.map": "/Facebook-story-demo/static/js/main.f8885811.chunk.js.map",
+    "runtime-main.js": "/Facebook-story-demo/static/js/runtime-main.303aa93d.js",
+    "runtime-main.js.map": "/Facebook-story-demo/static/js/runtime-main.303aa93d.js.map",
+    "static/css/2.4ec3f6be.chunk.css": "/Facebook-story-demo/static/css/2.4ec3f6be.chunk.css",
+    "static/js/2.4225b34e.chunk.js": "/Facebook-story-demo/static/js/2.4225b34e.chunk.js",
+    "static/js/2.4225b34e.chunk.js.map": "/Facebook-story-demo/static/js/2.4225b34e.chunk.js.map",
+    "static/js/3.620a7ab3.chunk.js": "/Facebook-story-demo/static/js/3.620a7ab3.chunk.js",
+    "static/js/3.620a7ab3.chunk.js.map": "/Facebook-story-demo/static/js/3.620a7ab3.chunk.js.map",
+    "index.html": "/Facebook-story-demo/index.html",
+    "static/css/2.4ec3f6be.chunk.css.map": "/Facebook-story-demo/static/css/2.4ec3f6be.chunk.css.map",
+    "static/css/main.ad18df39.chunk.css.map": "/Facebook-story-demo/static/css/main.ad18df39.chunk.css.map",
+    "static/js/2.4225b34e.chunk.js.LICENSE.txt": "/Facebook-story-demo/static/js/2.4225b34e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.303aa93d.js",
+    "static/css/2.4ec3f6be.chunk.css",
+    "static/js/2.4225b34e.chunk.js",
+    "static/css/main.ad18df39.chunk.css",
+    "static/js/main.f8885811.chunk.js"
+  ]
+}
