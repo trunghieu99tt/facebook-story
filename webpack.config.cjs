@@ -37,6 +37,13 @@ module.exports = {
             ignore: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
           },
         },
+        {
+          from: path.resolve(__dirname, 'src'),
+          to: path.resolve(__dirname, 'dist/cjs'),
+          globOptions: {
+            ignore: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+          },
+        },
       ],
     }),
   ],

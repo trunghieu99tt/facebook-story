@@ -1,6 +1,6 @@
 {
   "name": "facebook-story",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "./dist/index.js",
   "module": "./dist/cjs/index.js",
   "types": "./dist/index.d.ts",
@@ -63,7 +63,8 @@
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "tslib": "^2.4.0"
   },
   "files": [
     "dist",
