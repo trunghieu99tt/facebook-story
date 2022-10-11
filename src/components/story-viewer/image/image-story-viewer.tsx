@@ -1,32 +1,59 @@
 import { FabricJSCanvas, useFabricJSEditor } from 'fabricjs-react';
 import React, { useEffect } from 'react';
 
-import { TPropsClass } from '../../../types/app.types';
-import { mergeClasses } from '../../../utils';
-import defaultClasses from './image-story-viewer.module.css';
+import './image-story-viewer.css';
 
 interface Props {
-  data: any | null;
-  classes?: TPropsClass;
+  data: {
+    objects: any;
+    width: number;
+    height: number;
+  } | null;
+  width: number;
+  height: number;
 }
 
 export const ImageStoryViewer = ({
   data,
-  classes: propClasses,
+  width,
+  height,
 }: Props): JSX.Element => {
-  const classes = mergeClasses(defaultClasses, propClasses);
-
   const { editor, onReady } = useFabricJSEditor();
 
   useEffect(() => {
     if (data && editor) {
-      editor?.canvas.loadFromJSON(data, () => {
-        editor?.canvas.requestRenderAll();
-        editor?.canvas.renderAll();
-        editor?.canvas.calcOffset();
-      });
+      editor?.canvas?.setWidth(width);
+      editor?.canvas?.setHeight(height);
+      editor?.canvas.loadFromJSON(data.objects, resizeObjectsToFitCanvas);
     }
   }, [editor, data]);
+
+  const resizeObjectsToFitCanvas = () => {
+    const objects = editor?.canvas.getObjects();
+    if (!data || !objects) return;
+
+    const { width: originalWidth, height: originalHeight } = data;
+    const scaleWidth = width / originalWidth;
+    const scaleHeight = height / originalHeight;
+
+    objects?.forEach((obj: any) => {
+      if (
+        obj.scaleX !== undefined &&
+        obj.scaleY !== undefined &&
+        obj.left !== undefined &&
+        obj.top !== undefined
+      ) {
+        obj.scaleX = obj.scaleX * scaleWidth;
+        obj.scaleY = obj.scaleY * scaleHeight;
+        obj.left = obj.left * scaleWidth;
+        obj.top = obj.top * scaleHeight;
+        obj.setCoords();
+      }
+    });
+    editor?.canvas.requestRenderAll();
+    editor?.canvas.renderAll();
+    editor?.canvas.calcOffset();
+  };
 
   return (
     <div
@@ -36,7 +63,10 @@ export const ImageStoryViewer = ({
         height: '100%',
       }}
     >
-      <FabricJSCanvas className={classes.canvas} onReady={onReady} />
+      <FabricJSCanvas
+        className="fs-imageStoryViewer-canvas"
+        onReady={onReady}
+      />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 {
   "name": "facebook-story",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -46,8 +46,6 @@
     "colorette": "^2.0.19",
     "fabric": "^5.2.4",
     "fabricjs-react": "^1.0.8",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
     "react-icons": "^4.4.0"
   },
   "repository": {

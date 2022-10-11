@@ -22,3 +22,14 @@ export const DEFAULT_TEXT_ATTRIBUTES = {
   fontWeight: 'normal',
   textAlign: 'left',
 };
+
+export const AVAILABLE_FONTS = [
+  'Arial',
+  'Montserrat',
+  'Noto Sans',
+  'Poppins',
+  'Roboto',
+  'Source Sans Pro',
+];
+
+export const DEFAULT_FONTS = ['Arial', 'Helvetica'];

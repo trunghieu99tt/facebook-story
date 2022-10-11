@@ -1,0 +1,45 @@
+.fs-dropdown-wrapper {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 12px;
+  padding: 15px;
+  background: #fff;
+  min-width: 200px;
+  z-index: 2;
+}
+
+.fs-dropdown-list {
+  padding: 0;
+}
+
+.fs-dropdown-listItem {
+  padding: 10px 15px;
+  transition: all 0.5s;
+  border-radius: 5px;
+}
+
+.fs-dropdown-listItem:hover {
+  cursor: pointer;
+  background: var(--light-1);
+}
+
+.fs-dropdown-listItem a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--gray-2);
+}
+
+.fs-dropdown-listItem a svg {
+  --size: 16px;
+  width: var(--size);
+  height: var(--size);
+}
+
+.fs-dropdown-listItem a p {
+  font-size: 12px;
+  font-weight: 500;
+}

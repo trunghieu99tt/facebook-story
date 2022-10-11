@@ -1,16 +1,13 @@
 import React, { ChangeEvent } from 'react';
-import { TPropsClass } from '../../../../types/app.types';
-import { isValidUrl, mergeClasses } from '../../../../utils';
-import defaultClasses from './url-uploader.module.css';
+import { isValidUrl } from '../../../../utils';
+import './url-uploader.css';
 
 type Props = {
   changeImage: (url: string) => void;
-  classes?: TPropsClass;
+  loadImageLabel?: string;
 };
 
-const UrlUploader = ({ changeImage, classes: propsClasses }: Props) => {
-  const classes = mergeClasses(defaultClasses, propsClasses);
-
+const UrlUploader = ({ changeImage, loadImageLabel }: Props) => {
   const [imageUrl, setImageUrl] = React.useState('');
 
   const onChangeUrl = (event: ChangeEvent<HTMLInputElement>) => {
@@ -25,9 +22,15 @@ const UrlUploader = ({ changeImage, classes: propsClasses }: Props) => {
   };
 
   return (
-    <div className={classes.imageForm}>
-      <input type="text" onChange={onChangeUrl} />
-      <button onClick={onLoadImage}>Load Image</button>
+    <div className="fs-urlUploader-root">
+      <input
+        type="text"
+        onChange={onChangeUrl}
+        className="fs-urlUploader-input"
+      />
+      <button onClick={onLoadImage} className="fs-urlUploader-btn">
+        {loadImageLabel ?? 'Load Image'}
+      </button>
     </div>
   );
 };

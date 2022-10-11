@@ -1,39 +1,39 @@
-import React, { ChangeEvent, useState } from 'react';
-import { BACKGROUND_LIST } from '../../../constants';
-import { TPropsClass } from '../../../types/app.types';
-import { mergeClasses } from '../../../utils';
-import defaultClasses from './text-story.module.css';
+import React, { ChangeEvent, useCallback, useMemo, useState } from 'react';
+import { AVAILABLE_FONTS, BACKGROUND_LIST } from '../../../constants';
+import Selector from '../../shared/selector/selector';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import './text-story-form.css';
+import { TTextStoryData } from '../../../types';
 
 type Prop = {
   onCancel: () => void;
   onSubmit: (text: string) => void;
 
-  classes?: TPropsClass;
+  labels?: TLabels;
   maxLength?: number;
   onExceedMaxLength?: () => void;
-  labels?: TLabels;
 };
 
 type TLabels = {
   addTextLabel?: string;
-  changeColorLabel?: string;
   previewLabel?: string;
   saveBtnLabel?: string;
   cancelBtnLabel?: string;
+  changeColorLabel?: string;
+  changeFontLabel?: string;
 };
 
 export const TextStoryForm = ({
+  labels,
+  maxLength = 200,
+
   onCancel,
   onSubmit,
   onExceedMaxLength,
-  maxLength,
-  classes: propsClasses,
-  labels,
 }: Prop): JSX.Element => {
-  const classes = mergeClasses(defaultClasses, propsClasses);
-
   const [text, setText] = useState('');
   const [background, setBackground] = useState('#000');
+  const [fontFamily, setFontFamily] = useState('Arial');
 
   const onChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
@@ -48,31 +48,63 @@ export const TextStoryForm = ({
 
   const saveToServer = () => {
     if (text.trim().length > 0) {
-      const data = {
+      const data: { type: string } & TTextStoryData = {
         type: 'text',
         background,
+        fontFamily,
         text,
       };
       onSubmit(JSON.stringify(data));
     }
   };
 
+  const fontOptions = useMemo(() => {
+    return AVAILABLE_FONTS.map((font) => ({
+      label: font,
+      value: font,
+      id: font,
+    }));
+  }, []);
+
+  const renderChosenFontFamily = useCallback(
+    (value: string) => (
+      <div className="fs-textStoryForm-textConfig__fontPickerValue">
+        <span>{value}</span>
+        <MdKeyboardArrowDown />
+      </div>
+    ),
+    [],
+  );
+
   return (
-    <div className={classes.root}>
-      <div className={classes.form}>
-        <aside className={classes.aside}>
-          <p className={classes.label}>
+    <div className="fs-textStoryForm-root">
+      <div className="fs-textStoryForm-form">
+        <aside className="fs-textStoryForm-textConfig">
+          <p className="fs-textStoryForm-textConfig__label">
             {labels?.addTextLabel ?? 'Add your text here'}
           </p>
           <textarea
-            className={classes.textarea}
+            className="fs-textStoryForm-textConfig__textArea"
             onChange={onChangeText}
             rows={7}
           />
-          <p className={classes.label}>
+
+          <p className="fs-textStoryForm-textConfig__label">
+            {labels?.changeFontLabel ?? 'Change font'}
+          </p>
+          <div className="fs-textStoryForm-textConfig__fontPicker">
+            <Selector<string>
+              options={fontOptions}
+              onChange={setFontFamily}
+              value={fontFamily}
+              renderValue={renderChosenFontFamily}
+            />
+          </div>
+
+          <p className="fs-textStoryForm-textConfig__label">
             {labels?.changeColorLabel ?? 'Change color'}
           </p>
-          <ul className={classes.backgroundList}>
+          <ul className="fs-textStoryForm-textConfig__backgroundList">
             {BACKGROUND_LIST.map((color: string) => {
               return (
                 <ColorOption
@@ -85,24 +117,39 @@ export const TextStoryForm = ({
             })}
           </ul>
         </aside>
-        <div className={classes.main}>
-          <p className={classes.label}>{labels?.previewLabel ?? 'Preview'}</p>
+        <div className="fs-textStoryForm-preview">
+          <p className="fs-textStoryForm-preview__label">
+            {labels?.previewLabel ?? 'Preview'}
+          </p>
 
           <div
-            className={classes.textStoryPreview}
+            className="fs-textStoryForm-preview__wrapper"
             style={{
               background,
             }}
           >
-            <p className={classes.text}>{text}</p>
+            <p
+              className="fs-textStoryForm-preview__text"
+              style={{
+                fontFamily,
+              }}
+            >
+              {text}
+            </p>
           </div>
         </div>
       </div>
-      <div className={classes.btnGroup}>
-        <button className={classes.saveBtn} onClick={saveToServer}>
+      <div className="fs-textStoryForm-actionBtnGroup">
+        <button
+          className="fs-textStoryForm-actionBtnGroup__saveBtn"
+          onClick={saveToServer}
+        >
           {labels?.saveBtnLabel ?? 'save'}
         </button>
-        <button className={classes.cancelBtn} onClick={onCancel}>
+        <button
+          className="fs-textStoryForm-actionBtnGroup__cancelBtn"
+          onClick={onCancel}
+        >
           {labels?.cancelBtnLabel ?? 'cancel'}
         </button>
       </div>

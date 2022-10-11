@@ -9,11 +9,11 @@ import React, {
   useState,
 } from 'react';
 import { DEFAULT_TEXT_ATTRIBUTES } from '../../../constants';
-
 import { EImageFormUploadType } from '../../../enum/form.enum';
 import FileUploader from './file-uploader/file-uploader';
-import classes from './image-story.module.css';
 import UrlUploader from './url-uploader/url-uploader';
+
+import './image-story-form.css';
 
 type TImageFormWithFileUploader = {
   uploadType: EImageFormUploadType.File;
@@ -51,7 +51,7 @@ type Props = {
   height: number;
 };
 
-export const ImageStory = (
+export const ImageStoryForm = (
   props: Props & (TImageFormWithFileUploader | TImageFormWithUrlUploader),
 ): JSX.Element => {
   const [imageUrl, setImageUrl] = useState<string>('');
@@ -117,6 +117,18 @@ export const ImageStory = (
     editor?.canvas.renderAll();
   };
 
+  const saveObjects = () => {
+    const objects = editor?.canvas.toJSON();
+    if (objects) {
+      const data = {
+        objects,
+        width: props.width,
+        height: props.height,
+      };
+      props.onSubmit(JSON.stringify(data));
+    }
+  };
+
   const onSubmit = async () => {
     if (props.uploadType === EImageFormUploadType.File) {
       if (!file) return;
@@ -128,19 +140,13 @@ export const ImageStory = (
       obj?.forEach((o: any) => {
         if (o.type === 'image') {
           o.setSrc(image, () => {
-            const objects = editor?.canvas.toJSON();
-            if (objects) {
-              props.onSubmit(JSON.stringify(objects));
-            }
+            saveObjects();
           });
         }
       });
-    } else {
-      const objects = editor?.canvas.toJSON();
-      if (objects) {
-        props.onSubmit(JSON.stringify(objects));
-      }
+      return;
     }
+    saveObjects();
   };
 
   const onChangeImage = useCallback(
@@ -185,29 +191,32 @@ export const ImageStory = (
   }, [props.uploadType, onChangeImage]);
 
   return (
-    <div className={classes.root}>
-      <div className={classes.top}>
+    <div className="fs-imageStoryForm-root">
+      <div className="fs-imageStoryForm-top">
         {isSubmitted && (
-          <aside className={classes.aside}>
-            <button className={classes.addTextBtn} onClick={onAddText}>
+          <aside className="fs-imageStoryForm-top__aside">
+            <button
+              className="fs-imageStoryForm-addTextBtn"
+              onClick={onAddText}
+            >
               {props.labels?.addTextBtnLabel ?? 'Add Text'}
             </button>
             <button
-              className={classes.deleteSelections}
+              className="fs-imageStoryForm-deleteTextsBtn"
               onClick={deleteSelections}
             >
-              {props?.labels?.deleteSelectionsBtnLabel ?? 'deleteSelections'}
+              {props?.labels?.deleteSelectionsBtnLabel ?? 'Delete Selections'}
             </button>
             {textBoxCounter > 0 && (
-              <div className={classes.textColorForm}>
+              <div className="fs-imageStoryForm-textColorForm">
                 <label
                   htmlFor="image-story-text-color"
-                  className={classes.textColorLabel}
+                  className="fs-imageStoryForm-textColorForm__label"
                 >
-                  {props?.labels?.textColorLabel ?? 'textColor'}
+                  {props?.labels?.textColorLabel ?? 'Change Text Color'}
                 </label>
                 <input
-                  className={classes.textColorInput}
+                  className="fs-imageStoryForm-textColorForm__input"
                   type="color"
                   id="image-story-text-color"
                   onChange={onChangeTextColor}
@@ -218,25 +227,31 @@ export const ImageStory = (
         )}
 
         <div
-          className={classes.main}
+          className="fs-imageStoryForm-main"
           style={{
             width: props.width,
             height: props.height,
           }}
         >
           {!isSubmitted && uploader}
-          <FabricJSCanvas className={classes.canvas} onReady={onReady} />
+          <FabricJSCanvas
+            className="fs-imageStoryForm-canvas"
+            onReady={onReady}
+          />
         </div>
       </div>
-      <div className={classes.btnGroup}>
+      <div className="fs-imageStoryForm-actionBtnGroup">
         <button
-          className={classes.saveBtn}
+          className="fs-imageStoryForm-actionBtnGroup__saveBtn"
           onClick={onSubmit}
           disabled={!isSubmitted}
         >
           {props?.labels?.saveBtnLabel ?? 'save'}
         </button>
-        <button className={classes.cancelBtn} onClick={props?.onCancel}>
+        <button
+          className="fs-imageStoryForm-actionBtnGroup__cancelBtn"
+          onClick={props?.onCancel}
+        >
           {props?.labels?.cancelBtnLabel ?? 'cancel'}
         </button>
       </div>

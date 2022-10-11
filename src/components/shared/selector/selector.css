@@ -1,0 +1,30 @@
+.fs-selector-wrapper {
+  position: relative;
+  z-index: 2;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.fs-selector-selectedItem {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.fs-selector-selectionItem {
+  font-size: 14px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.fs-selector-selectedItem svg,
+.fs-selector-selectionItem svg {
+  --size: 16px;
+  width: var(--size);
+  height: var(--size);
+}

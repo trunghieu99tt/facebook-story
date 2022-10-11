@@ -1,0 +1,110 @@
+.fs-textStoryForm-root {
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.fs-textStoryForm-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.fs-textStoryForm-textConfig {
+  padding: 20px;
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.fs-textStoryForm-textConfig__label {
+  font-size: 12px;
+  margin: 10px 0;
+  font-weight: 500;
+  border-top: 1px solid var(--gray-4);
+  padding-top: 10px;
+  padding: 0;
+}
+
+.fs-textStoryForm-textConfig__textArea {
+  padding: 10px;
+  border-radius: 8px;
+  resize: none;
+}
+
+.fs-textStoryForm-textConfig__fontPicker {
+  margin-bottom: 20px;
+}
+
+.fs-textStoryForm-textConfig__fontPickerValue {
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+}
+
+.fs-textStoryForm-textConfig__backgroundList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  grid-gap: 0.5px;
+  grid-gap: 10px;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--gray-4);
+  padding-bottom: 20px;
+}
+
+.fs-textStoryForm-textConfig__backgroundList li {
+  list-style: none;
+  --size: 30px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+}
+
+.fs-textStoryForm-preview {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 30px 30px 30px;
+  box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 20%);
+}
+
+.fs-textStoryForm-preview__wrapper {
+  --size: 400px;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.fs-textStoryForm-preview__text {
+  font-size: 20px;
+  color: #fff;
+  word-break: break-all;
+  padding: 15px;
+}
+
+.fs-textStoryForm-actionBtnGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.fs-textStoryForm-actionBtnGroup__saveBtn,
+.fs-textStoryForm-actionBtnGroup__cancelBtn {
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.fs-textStoryForm-actionBtnGroup__cancelBt {
+  background: var(--red);
+}

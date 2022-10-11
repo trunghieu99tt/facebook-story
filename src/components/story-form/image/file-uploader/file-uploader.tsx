@@ -1,22 +1,13 @@
 import React, { ChangeEvent } from 'react';
-import defaultClasses from './file-uploader.module.css';
 import { BsCardImage } from 'react-icons/bs';
-import { TPropsClass } from '../../../../types/app.types';
-import { mergeClasses } from '../../../../utils';
+import './file-uploader.css';
 
 type Props = {
   uploadText?: string;
   onFileChange: (file: File) => void;
-  classes?: TPropsClass;
 };
 
-const FileUploader = ({
-  onFileChange,
-  uploadText,
-  classes: propsClasses,
-}: Props): JSX.Element => {
-  const classes = mergeClasses(defaultClasses, propsClasses);
-
+const FileUploader = ({ onFileChange, uploadText }: Props): JSX.Element => {
   const onChangeFile = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event?.target?.files?.[0];
     if (file?.type?.match(/image.*/)) {
@@ -26,17 +17,17 @@ const FileUploader = ({
   };
 
   return (
-    <div className={classes.form}>
+    <div className="fs-fileUploader-root">
       <input
         type="file"
         onChange={onChangeFile}
-        className={classes.input}
+        className="fs-fileUploader-input"
         style={{
           display: 'none',
         }}
         id="imageFormInput"
       />
-      <label htmlFor="imageFormInput" className={classes.label}>
+      <label htmlFor="imageFormInput" className="fs-fileUploader-label">
         <BsCardImage />
         <p>{uploadText}</p>
       </label>

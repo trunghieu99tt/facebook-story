@@ -1,31 +1,22 @@
-import { TPropsClass } from '../../../types/app.types';
-import { mergeClasses } from '../../../utils';
-import defaultClasses from './text-story-viewer.module.css';
 import React from 'react';
+import { TTextStoryData } from '../../../types';
+import './text-story-viewer.css';
 
 interface Props {
-  data: {
-    background: string;
-    text: string;
-  };
-  classes?: TPropsClass;
+  data: TTextStoryData;
 }
 
-export const TextStoryViewer = ({
-  data,
-  classes: propsClasses,
-}: Props): JSX.Element => {
-  const classes = mergeClasses(defaultClasses, propsClasses);
-
-  const { background, text } = data;
+export const TextStoryViewer = ({ data }: Props): JSX.Element => {
+  const { background, text, fontFamily } = data;
   return (
     <div
-      className={classes.root}
+      className="fs-textStoryViewer-root"
       style={{
-        background: `${background}`,
+        background,
+        fontFamily,
       }}
     >
-      <div className={classes.text}>{text}</div>
+      <div className="fs-textStoryViewer-text">{text}</div>
     </div>
   );
 };

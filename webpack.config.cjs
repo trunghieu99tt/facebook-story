@@ -13,20 +13,6 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              // importLoaders: 1,
-              modules: true,
-            },
-          },
-        ],
-        include: /\.module\.css$/,
-      },
-      {
-        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
         exclude: /\.module\.css$/,
       },
@@ -62,5 +48,9 @@ module.exports = {
       minSize: 10000,
       maxSize: 250000,
     },
+  },
+  externals: {
+    react: 'commonjs react',
+    'react-dom': 'commonjs react-dom',
   },
 };
