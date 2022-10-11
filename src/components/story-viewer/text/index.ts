@@ -1,1 +1,1 @@
-export { default } from './text-story-viewer';
+export * from './text-story-viewer';

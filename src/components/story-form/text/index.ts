@@ -1,1 +1,1 @@
-export { default } from './text-story-form';
+export * from './text-story-form';

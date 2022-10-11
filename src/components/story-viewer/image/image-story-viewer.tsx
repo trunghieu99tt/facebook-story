@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
 import { FabricJSCanvas, useFabricJSEditor } from 'fabricjs-react';
+import React, { useEffect } from 'react';
 
-import defaultClasses from './image-story-viewer.module.css';
-import { mergeClasses } from '../../../utils';
 import { TPropsClass } from '../../../types/app.types';
+import { mergeClasses } from '../../../utils';
+import defaultClasses from './image-story-viewer.module.css';
 
 interface Props {
   data: any | null;
   classes?: TPropsClass;
 }
 
-const ImageStoryViewer = ({
+export const ImageStoryViewer = ({
   data,
   classes: propClasses,
 }: Props): JSX.Element => {
@@ -40,5 +40,3 @@ const ImageStoryViewer = ({
     </div>
   );
 };
-
-export default ImageStoryViewer;

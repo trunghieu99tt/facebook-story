@@ -1,1 +1,1 @@
-export { default } from './image-story';
+export * from './image-story';

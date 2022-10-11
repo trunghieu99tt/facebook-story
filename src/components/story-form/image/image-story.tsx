@@ -51,7 +51,7 @@ type Props = {
   height: number;
 };
 
-const ImageStory = (
+export const ImageStory = (
   props: Props & (TImageFormWithFileUploader | TImageFormWithUrlUploader),
 ): JSX.Element => {
   const [imageUrl, setImageUrl] = useState<string>('');
@@ -243,5 +243,3 @@ const ImageStory = (
     </div>
   );
 };
-
-export default ImageStory;

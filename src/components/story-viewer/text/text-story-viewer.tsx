@@ -4,11 +4,14 @@ import defaultClasses from './text-story-viewer.module.css';
 import React from 'react';
 
 interface Props {
-  data: any;
+  data: {
+    background: string;
+    text: string;
+  };
   classes?: TPropsClass;
 }
 
-const TextStoryViewer = ({
+export const TextStoryViewer = ({
   data,
   classes: propsClasses,
 }: Props): JSX.Element => {
@@ -26,5 +29,3 @@ const TextStoryViewer = ({
     </div>
   );
 };
-
-export default TextStoryViewer;

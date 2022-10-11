@@ -22,7 +22,7 @@ type TLabels = {
   cancelBtnLabel?: string;
 };
 
-const TextStoryForm = ({
+export const TextStoryForm = ({
   onCancel,
   onSubmit,
   onExceedMaxLength,
@@ -137,5 +137,3 @@ const ColorOption = React.memo(
     );
   },
 );
-
-export default TextStoryForm;
