@@ -2,6 +2,7 @@
   "name": "facebook-story",
   "version": "1.0.4",
   "main": "./dist/index.js",
+  "module": "./dist/cjs/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
@@ -40,13 +41,15 @@
   },
   "author": "ricky.nguyen",
   "scripts": {
-    "build": "yarn build:clean && yarn build:tsc && webpack && rimraf ./dist/bundle.js",
+    "build": "yarn build:clean && yarn build:esm && yarn build:cjs && webpack && rimraf ./dist/bundle.js",
     "build:clean": "rimraf dist",
     "build:tsc": "tsc",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "format": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
     "prepare": "husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
   "dependencies": {
     "colorette": "^2.0.19",
