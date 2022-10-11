@@ -1,6 +1,6 @@
 # Facebook Story
 
-React components to create components associated with Facebook like Story
+React implementations of Facebook Story 
 
 ## Features
 
