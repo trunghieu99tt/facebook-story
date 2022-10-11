@@ -1,6 +1,6 @@
 {
   "name": "facebook-story",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -40,7 +40,7 @@
   },
   "author": "ricky.nguyen",
   "scripts": {
-    "build": "yarn build:clean && yarn build:tsc && webpack",
+    "build": "yarn build:clean && yarn build:tsc && webpack && rimraf ./dist/bundle.js",
     "build:clean": "rimraf dist",
     "build:tsc": "tsc",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
