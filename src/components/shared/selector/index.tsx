@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useRef, useState } from 'react';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
-import Dropdown from '../dropdown/dropdown';
+import Dropdown from '../dropdown';
 import './selector.css';
 
 type TOptions<T> = {

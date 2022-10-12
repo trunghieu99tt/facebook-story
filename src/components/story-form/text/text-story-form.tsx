@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useCallback, useMemo, useState } from 'react';
-import { AVAILABLE_FONTS, BACKGROUND_LIST } from '../../../constants';
-import Selector from '../../shared/selector/selector';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import './text-story-form.css';
+import { AVAILABLE_FONTS, BACKGROUND_LIST } from '../../../constants';
 import { TTextStoryData } from '../../../types';
+import Selector from '../../shared/selector';
+
+import './text-story-form.css';
 
 type Prop = {
   onCancel: () => void;
