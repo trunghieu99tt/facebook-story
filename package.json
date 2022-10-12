@@ -1,6 +1,6 @@
 {
   "name": "facebook-story",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./dist/index.js",
   "module": "./dist/cjs/index.js",
   "types": "./dist/index.d.ts",
