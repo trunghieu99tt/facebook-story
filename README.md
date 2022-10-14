@@ -1,6 +1,6 @@
 # Facebook Story
 
-Simplified React implementation of Facebook story
+React components to create components associated with Facebook like Story
 
 ## Features
 
@@ -10,7 +10,7 @@ Simplified React implementation of Facebook story
 |  ✅  | Create image-based story             |
 |  ✅  | View text-based story                |
 |  ✅  | View image-based story               |
-| ⬜️  | Story card (with countdown)          |
+|  ✅  | Story card (with countdown)          |
 | ⬜️  | Background music in text/image story |
 
 ## Installation
@@ -74,7 +74,7 @@ TLabels;
 <ImageStoryForm
   onCancel={reset}
   onSubmit={onSubmit}
-  uploadType="file"
+  uploadType={EImageFormUploadType.File}
   uploadFunction={uploadMediaFunction}
   width={300}
   height={300}
@@ -187,6 +187,27 @@ TData;
 | `background` | `string` | **Required**. Background of text story  |
 | `fontFamily` | `string` | **Required**. Font family of text story |
 | `text`       | `string` | **Required**. Content of text story     |
+
+#### Story Card
+
+```js
+<StoryCard data={data} width={200} height={200} />
+```
+
+| prop     | Type               | Description                        |
+| :------- | :----------------- | :--------------------------------- |
+| `data`   | `TStoryCardData[]` | **Required**. Data of story card   |
+| `width`  | `number`           | **Required**. Width of story card  |
+| `height` | `number`           | **Required**. Height of story card |
+
+```js
+TStoryCardData;
+```
+
+| key       | Type                             | Description                                                                          |
+| :-------- | :------------------------------- | :----------------------------------------------------------------------------------- |
+| `type`    | `"Image" \| "Text" \| "Unknown"` | **Required**. Type of story                                                          |
+| `content` | `string`                         | **Required**. Content of story (stringified of json data from the create story form) |
 
 ## License
 
