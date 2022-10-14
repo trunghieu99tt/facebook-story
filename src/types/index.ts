@@ -7,3 +7,9 @@ export type TTextStoryData = {
   fontFamily: string;
   text: string;
 };
+
+export enum EStoryType {
+  Image = 'Image',
+  Text = 'Text',
+  Unknown = 'Unknown',
+}

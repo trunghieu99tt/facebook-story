@@ -21,11 +21,19 @@ export const ImageStoryViewer = ({
   const { editor, onReady } = useFabricJSEditor();
 
   useEffect(() => {
-    if (data && editor) {
-      editor?.canvas?.setWidth(width);
-      editor?.canvas?.setHeight(height);
-      editor?.canvas.loadFromJSON(data.objects, resizeObjectsToFitCanvas);
-    }
+    if (!data || !editor) return;
+
+    editor?.canvas?.setWidth(width);
+    editor?.canvas?.setHeight(height);
+    editor?.canvas.loadFromJSON(data.objects, resizeObjectsToFitCanvas);
+
+    editor?.canvas?.on('before:render', () => {
+      editor?.canvas?.clearContext(editor?.canvas?.getContext());
+    });
+
+    return () => {
+      editor?.canvas?.removeListeners();
+    };
   }, [editor, data]);
 
   const resizeObjectsToFitCanvas = () => {

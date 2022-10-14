@@ -1,6 +1,6 @@
 {
   "name": "facebook-story",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "./dist/index.js",
   "module": "./dist/cjs/index.js",
   "types": "./dist/index.d.ts",
@@ -29,8 +29,6 @@
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.1",
@@ -54,6 +52,7 @@
     "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
   "dependencies": {
+    "classnames": "^2.3.2",
     "colorette": "^2.0.19",
     "fabric": "^5.2.4",
     "fabricjs-react": "^1.0.8",
