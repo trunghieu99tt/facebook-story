@@ -6,6 +6,7 @@ export type TTextStoryData = {
   background: string;
   fontFamily: string;
   text: string;
+  audioUrl: string;
 };
 
 export enum EStoryType {

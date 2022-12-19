@@ -49,13 +49,17 @@
     "prepare": "husky install",
     "pre-commit": "lint-staged",
     "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "example": "cd example && yarn start",
+    "predeploy": "cd example && npm install && npm run build",
+		"deploy": "gh-pages -d example/dist"
   },
   "dependencies": {
     "classnames": "^2.3.2",
     "colorette": "^2.0.19",
     "fabric": "^5.2.4",
     "fabricjs-react": "^1.0.8",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "tslib": "^2.4.0"
   },

@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 import { EStoryType } from '../../types';
+import { safeCallFn } from '../../utils';
 import './story-card.css';
 import StoryViewer from './story-viewer';
 
@@ -48,16 +49,12 @@ export const StoryCard = ({
       const nextActiveStoryId =
         direction === EDirection.Left ? activeStoryId - 1 : activeStoryId + 1;
       if (nextActiveStoryId < 0) {
-        if (onPrev) {
-          onPrev();
-        }
+        safeCallFn(onPrev);
         return;
       }
 
       if (nextActiveStoryId >= data.length) {
-        if (onNext) {
-          onNext();
-        }
+        safeCallFn(onNext);
         return;
       }
       setActiveStoryId(nextActiveStoryId);

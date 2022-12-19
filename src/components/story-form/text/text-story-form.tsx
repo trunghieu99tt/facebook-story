@@ -35,6 +35,7 @@ export const TextStoryForm = ({
   const [text, setText] = useState('');
   const [background, setBackground] = useState('#000');
   const [fontFamily, setFontFamily] = useState('Arial');
+  const [audioUrl, setAudioUrl] = useState('');
 
   const onChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
@@ -54,6 +55,7 @@ export const TextStoryForm = ({
         background,
         fontFamily,
         text,
+        audioUrl,
       };
       onSubmit(JSON.stringify(data));
     }

@@ -25,3 +25,7 @@ export const mergeClasses = (...objects: any[]): Record<string, any> => {
     return { ...acc, ...obj };
   }, {});
 };
+
+export const safeCallFn = (fn: any, ...args: any[]) => {
+  fn && typeof fn === 'function' && fn(...args);
+};
